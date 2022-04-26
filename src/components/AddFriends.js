@@ -16,22 +16,38 @@ const AddFriend = () => {
     });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = window.localStorage.getItem("token");
+
+    axios
+      .post("http://localhost:9000/api/friends", form, {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then(() => {
+        push("/friends");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
       <h2>Add a Friend</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
-          <label>Name</label>
+          <label htmlFor="name">Name</label>
           <input onChange={handleChange} name="name" id="name" />
         </div>
         <div>
-          <label>Age</label>
+          <label htmlFor="age">Age</label>
           <input onChange={handleChange} name="age" id="age" />
         </div>
         <div>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input onChange={handleChange} name="email" id="email" />
         </div>
         <button>Submit</button>
@@ -39,3 +55,4 @@ const AddFriend = () => {
     </div>
   );
 };
+export default AddFriend;
