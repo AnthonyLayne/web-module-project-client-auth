@@ -25,6 +25,7 @@ const Logout = () => {
         console.log(err);
       });
   });
+  return <div></div>;
 };
 
 export default Logout;
