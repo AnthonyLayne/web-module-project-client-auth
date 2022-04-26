@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const { push } = useHistory();
   //need state, handlechange and handlesubmit
   const [credentials, setCredentials] = useState({ username: "", password: "" });
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     setCredentials({
       ...credentials,
       username: "Bloom",
       password: "Tech",
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:9000/api/login", credentials)
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.token);
+        push("/friends");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
