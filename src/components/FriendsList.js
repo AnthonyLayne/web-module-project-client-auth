@@ -24,6 +24,16 @@ const FriendsList = () => {
   return (
     <div>
       <h2>My Friends</h2>
+      <ul>
+        {friends.map((friend) => {
+          return (
+            <li key={friend.id}>
+              {friend.name} - {friend.age} - {friend.email}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
+export default FriendsList;
