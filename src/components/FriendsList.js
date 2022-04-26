@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const FriendsList = () => {
-  const [friends, setFriends] = useState();
+  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");

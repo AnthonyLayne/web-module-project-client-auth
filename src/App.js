@@ -2,6 +2,10 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import Login from "./components/Login";
+import FriendsList from "./components/FriendsList";
+import Logout from "./components/LogOut";
+import AddFriend from "./components/AddFriends";
+import PrivateRoute from "./helper/PrivateRoute";
 
 function App() {
   return (
@@ -39,6 +43,12 @@ function App() {
         <Route exact path="/login">
           <Redirect to="/" />
         </Route>
+
+        <PrivateRoute exact path="/friends" component={FriendsList} />
+
+        <PrivateRoute exact path="/friends/add" component={AddFriend} />
+
+        <PrivateRoute exact path="/logout" component={Logout} />
       </div>
     </Router>
   );
