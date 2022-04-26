@@ -3,7 +3,18 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const AddFriend = () => {
-  const handleChange = () => {};
+  const [form, setForm] = useState({
+    name: "",
+    age: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = () => {};
 
@@ -13,15 +24,15 @@ const AddFriend = () => {
       <form>
         <div>
           <label>Name</label>
-          <input />
+          <input onChange={handleChange} name="name" id="name" />
         </div>
         <div>
           <label>Age</label>
-          <input />
+          <input onChange={handleChange} name="age" id="age" />
         </div>
         <div>
           <label>Email</label>
-          <input />
+          <input onChange={handleChange} name="email" id="email" />
         </div>
         <button>Submit</button>
       </form>
