@@ -31,12 +31,14 @@ const Login = () => {
   return (
     <div>
       <h1>Login</h1>
-      <form>
-        <label>UserName</label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">UserName</label>
         <input onChange={handleChange} name="username" id="username" />
-        <label>Password</label>
+        <label htmlFor="password">Password</label>
         <input onChange={handleChange} name="password" id="password" />
       </form>
     </div>
   );
 };
+
+export default Login;
